@@ -53,16 +53,23 @@ public class LoginService {
 	}
 
 	public ImageResponse signin(LoginPage loginpage) {
-		String hash=bCryptPasswordEncoder.encode(loginpage.getPassword());
-		Login login=loginRepository.findByEmail(loginpage.getEmail());
-		System.out.println(login.toString());
-		boolean pw_validate=bCryptPasswordEncoder.matches(hash, login.getHash());
-		if(login!=null && pw_validate) {
+		String password = loginpage.getPassword();
+		Login login = loginRepository.findByEmail(loginpage.getEmail());
+		
+		if (login == null) {
+
 			throw new NotFoundException();
 		}
 		
-		ImageResponse res=userService.getUserInfo(login.getEmail());
+		boolean pw_validate = bCryptPasswordEncoder.matches(password, login.getHash());
 		
+		if (!pw_validate) {
+
+			throw new NotFoundException();
+		}
+
+		ImageResponse res = userService.getUserInfo(login.getEmail());
+
 		return res;
 	}
 	

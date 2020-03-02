@@ -16,6 +16,16 @@ public class LoginPage {
 	String password;
 
 	public LoginPage() {}
+	
+	
+
+	public LoginPage(@NotBlank @Email String email, @NotBlank String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+
+
 
 	public String getEmail() {
 		return email;

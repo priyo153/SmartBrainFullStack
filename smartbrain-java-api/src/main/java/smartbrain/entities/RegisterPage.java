@@ -16,7 +16,7 @@ public class RegisterPage {
 	@Email(message="email must be in valid format")
 	String email;
 	
-	RegisterPage(){}
+	public RegisterPage(){}
 
 	public RegisterPage(@NotBlank String name, @NotBlank String password, @NotBlank @Email String email) {
 		super();

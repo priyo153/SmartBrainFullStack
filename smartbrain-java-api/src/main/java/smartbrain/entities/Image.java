@@ -10,7 +10,7 @@ public class Image {
 	@NotBlank
 	String input;
 	
-	Image(){}
+	public Image(){}
 	
 	
 

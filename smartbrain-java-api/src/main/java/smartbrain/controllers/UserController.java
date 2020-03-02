@@ -32,10 +32,7 @@ public class UserController {
 
 	@Autowired
 	UserService userService;
-	@GetMapping("/")
-	public String root(){
-		return "ok";
-	}
+	
 
 	@GetMapping("/profile/{id}")
 	public ResponseEntity<String> checkProfile(@PathVariable Long id) {

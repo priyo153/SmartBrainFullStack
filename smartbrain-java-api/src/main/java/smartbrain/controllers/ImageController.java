@@ -37,24 +37,11 @@ public class ImageController {
 	public String handleApiCall(@Valid @RequestBody Image url, BindingResult result) throws JsonProcessingException {
 
 		if (result.hasErrors()) {
+
 			throw new BadRequestException();
 		}
-		
-		String data;
-		
-		try {
 
-		final ClarifaiClient client = new ClarifaiBuilder("fa2ae7587782434c88412335ddbef736").buildSync();	
-		Model<Detection> facemodel = client.getDefaultModels().faceDetectionModel();
-		PredictRequest<Detection> request = facemodel.predict().withInputs(ClarifaiInput.forImage(url.getInput()));
-		 data = request.executeSync().rawBody();
-		}
-		catch(Exception e) {
-			throw new ApiDownException();
-			
-		}
-	
-		return data;
+		return userService.faceDetectionApiService(url);
 
 	}
 	
@@ -64,7 +51,7 @@ public class ImageController {
 		if (result.hasErrors()) {
 			throw new BadRequestException();
 		}
-		System.out.println(userid.getId());
+		
 		ImageResponse res=userService.updateCount(userid.getId());
 		
 		return new ResponseEntity<>(res,HttpStatus.OK);

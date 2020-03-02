@@ -10,7 +10,7 @@ public class UserID {
 	@NotNull
 	Long id;
 	
-	UserID(){}
+	public UserID(){}
 
 	public Long getId() {
 		return id;
