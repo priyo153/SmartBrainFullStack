@@ -13,7 +13,7 @@ import Register from "./components/Register/Register";
 const particleparam = particle;
 
 const ApiUrl =
-  /*"http://localhost:8080/"; */ "https://smartbrain-tool-priyojit.herokuapp.com/";
+  "http://localhost:8080/"; /* "https://smartbrain-tool-priyojit.herokuapp.com/";*/
 const initialState = {
   input: "",
   imageurl: "",
